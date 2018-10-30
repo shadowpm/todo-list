@@ -37,9 +37,9 @@ class App extends Component {
         return (
             <div className="App">
                 <h2>To do List</h2>
-                <CreateTaskComponent onCreate={this.create}/>
-                <TasksListComponent tasks={this.state.tasks}/>
-                <ConfirmDeleteTasksComponent />
+                <CreateTaskComponent onCreate = {this.create}/>
+                <TasksListComponent tasks = {this.state.tasks}/>
+                <ConfirmDeleteTasksComponent tasks = {this.state.tasks}/>
             </div>
         );
     }
