@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import CreateTaskComponent from './components/CreateTaskComponent';
 import TasksListComponent from './components/TasksListComponent';
+import ConfirmDeleteTasksComponent from './components/ConfirmDeleteTasksComponent';
 
 class App extends Component {
     constructor(props) {
@@ -38,6 +39,7 @@ class App extends Component {
                 <h2>To do List</h2>
                 <CreateTaskComponent onCreate={this.create}/>
                 <TasksListComponent tasks={this.state.tasks}/>
+                <ConfirmDeleteTasksComponent />
             </div>
         );
     }
