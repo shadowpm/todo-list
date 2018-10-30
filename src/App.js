@@ -42,7 +42,7 @@ class App extends Component {
     delete(taskId) {
         this.setState({
             tasks: this.state.tasks.filter((task) => {
-                return taskId !== this.state.tasks.id
+                return taskId !== task.id
 
             })
     }
