@@ -11,14 +11,19 @@ class App extends Component {
         this.state = {
             tasks: [],
             id: 0,
-            filter: false,
-            editCandidateTaskId: false,
-            deleteCandidateTaskId: false
+            filter: null,
+            editCandidateTaskId: null,
+            deleteCandidateTaskId: null
         }
 
         this.create = this.create.bind(this)
     }
 
+    /**
+     * This.....
+     *
+     * @param task
+     */
     create(task) {
         const object = {
             task: task,
@@ -32,14 +37,22 @@ class App extends Component {
         })
     }
 
+    delete(taskId) {
+        this.setState({
+            tasks: this.state.tasks.filter((x) => {
+                return x.id !== this.state.id
+            })
+        })
+    }
+
     render() {
         console.log(this.state);
         return (
             <div className="App">
                 <h2>To do List</h2>
-                <CreateTaskComponent onCreate = {this.create}/>
-                <TasksListComponent tasks = {this.state.tasks}/>
-                <ConfirmDeleteTasksComponent tasks = {this.state.tasks}/>
+                <CreateTaskComponent onCreate={this.create}/>
+                <TasksListComponent tasks={this.state.tasks}/>
+                <ConfirmDeleteTasksComponent tasks={this.state.tasks}/>
             </div>
         );
     }
