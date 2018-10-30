@@ -4,7 +4,7 @@ import TaskComponent from './TaskComponent';
 class TasksListComponent extends Component {
     render(){
         return(
-            this.props.tasks.map(function(x) { return (<div key={x.id}>{x.task}</div> + <TaskComponent/>) })
+            this.props.tasks.map((task) => (<TaskComponent key={task.id} task={task} onDelete={this.props.onDelete}/>) )
 
         )
     }

@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import './App.css';
 import CreateTaskComponent from './components/CreateTaskComponent';
 import TasksListComponent from './components/TasksListComponent';
-import ConfirmDeleteTasksComponent from './components/ConfirmDeleteTasksComponent';
+
+// import ConfirmDeleteTasksComponent from './components/ConfirmDeleteTasksComponent';
 
 class App extends Component {
     constructor(props) {
@@ -17,6 +18,7 @@ class App extends Component {
         }
 
         this.create = this.create.bind(this)
+        this.delete = this.delete.bind(this)
     }
 
     /**
@@ -39,23 +41,27 @@ class App extends Component {
 
     delete(taskId) {
         this.setState({
-            tasks: this.state.tasks.filter((x) => {
-                return x.id !== this.state.id
+            tasks: this.state.tasks.filter((task) => {
+                return taskId !== this.state.tasks.id
+
             })
-        })
     }
 
-    render() {
-        console.log(this.state);
-        return (
-            <div className="App">
-                <h2>To do List</h2>
-                <CreateTaskComponent onCreate={this.create}/>
-                <TasksListComponent tasks={this.state.tasks}/>
-                <ConfirmDeleteTasksComponent tasks={this.state.tasks}/>
-            </div>
-        );
-    }
+)
+}
+
+render()
+{
+    console.log(this.state);
+    return (
+        <div className="App">
+            <h2>To do List</h2>
+            <CreateTaskComponent onCreate={this.create}/>
+            <TasksListComponent tasks={this.state.tasks} onDelete={this.delete}/>
+            {/*<ConfirmDeleteTasksComponent tasks={this.state.tasks}/>*/}
+        </div>
+    );
+}
 }
 
 export default App;
