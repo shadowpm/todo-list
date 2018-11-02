@@ -14,8 +14,9 @@ class CreateTaskComponent extends Component {
     }
 
     handleSubmit(event) {
-        event.preventDefault();
         this.props.onCreate(this.state.value)
+        event.preventDefault();
+
     }
 
     render() {

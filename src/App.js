@@ -12,13 +12,14 @@ class App extends Component {
         this.state = {
             tasks: [],
             id: 0,
-            filter: null,
+            filter: 'all', // ['all', 'pending', 'done']
             editCandidateTaskId: null,
             deleteCandidateTaskId: null
         }
 
         this.create = this.create.bind(this)
         this.delete = this.delete.bind(this)
+        this.done = this.done.bind(this)
     }
 
     /**
@@ -32,7 +33,6 @@ class App extends Component {
             id: this.state.id,
             is_done: false
         }
-
         this.setState({
             tasks: [...this.state.tasks, object],
             id: this.state.id + 1
@@ -45,23 +45,32 @@ class App extends Component {
                 return taskId !== task.id
 
             })
+        })
     }
 
-)
-}
+    done(taskId) {
+        this.setState({
+            tasks: this.state.tasks.map((task) => {
+                if (task.id === taskId) {
+                    task.is_done = true;
+                }
+                return task;
+            })
+        })
+    }
 
-render()
-{
-    console.log(this.state);
-    return (
-        <div className="App">
-            <h2>To do List</h2>
-            <CreateTaskComponent onCreate={this.create}/>
-            <TasksListComponent tasks={this.state.tasks} onDelete={this.delete}/>
-            {/*<ConfirmDeleteTasksComponent tasks={this.state.tasks}/>*/}
-        </div>
-    );
-}
+
+    render() {
+        console.log(this.state);
+        return (
+            <div className="App">
+                <h2>To do List</h2>
+                <CreateTaskComponent onCreate={this.create}/>
+                <TasksListComponent tasks={this.state.tasks} onDelete={this.delete} onDone={this.done}/>
+                {/*<ConfirmDeleteTasksComponent tasks={this.state.tasks}/>*/}
+            </div>
+        );
+    }
 }
 
 export default App;
