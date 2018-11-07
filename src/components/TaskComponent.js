@@ -5,20 +5,30 @@ class TaskComponent extends Component {
         super(props)
         this.btnDeleteClicked = this.btnDeleteClicked.bind(this)
         this.btnDoneClicked = this.btnDoneClicked.bind(this)
+        this.renderDoneButton = this.renderDoneButton.bind(this)
     }
     btnDeleteClicked (){
         this.props.onDelete(this.props.task.id)
     }
-    btnDoneClicked (){
+    btnDoneClicked () {
         this.props.onDone(this.props.task.id)
     }
+
+    renderDoneButton () {
+        if (this.props.task.is_done === false) {
+            return <button onClick={this.btnDoneClicked}>Done</button>
+        } else {
+            return null;
+        }
+    }
+
     render() {
         return(
             <div>
                 {this.props.task.task}
                 <button onClick={this.btnDeleteClicked}>Delete</button>
                 <button>Edit</button>
-                <button onClick={this.btnDoneClicked}>Done</button>
+                {this.renderDoneButton()}
             </div>
         )
     }

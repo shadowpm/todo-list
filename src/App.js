@@ -65,6 +65,9 @@ class App extends Component {
         return (
             <div className="App">
                 <h2>To do List</h2>
+                <button>All</button>
+                <button>Done</button>
+                <button>Pending</button>
                 <CreateTaskComponent onCreate={this.create}/>
                 <TasksListComponent tasks={this.state.tasks} onDelete={this.delete} onDone={this.done}/>
                 {/*<ConfirmDeleteTasksComponent tasks={this.state.tasks}/>*/}

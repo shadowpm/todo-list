@@ -10,11 +10,16 @@ class CreateTaskComponent extends Component {
     }
 
     handleChange(event) {
-        this.setState({value: event.target.value});
+        this.setState({
+            value: event.target.value
+        });
     }
 
     handleSubmit(event) {
         this.props.onCreate(this.state.value)
+        this.setState({
+            value: ''
+        })
         event.preventDefault();
 
     }
@@ -23,7 +28,9 @@ class CreateTaskComponent extends Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <input placeholder="Enter task" id="user-task" value={this.state.value}
+                    <input placeholder="Enter task"
+                           id="user-task"
+                           value={this.state.value}
                            onChange={this.handleChange}/>
                     <button>Add Task</button>
                 </form>
