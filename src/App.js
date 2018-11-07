@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import CreateTaskComponent from './components/CreateTaskComponent';
 import TasksListComponent from './components/TasksListComponent';
+import FiltterComponent from './components/FiltterComponent';
 
 // import ConfirmDeleteTasksComponent from './components/ConfirmDeleteTasksComponent';
 
@@ -20,6 +21,7 @@ class App extends Component {
         this.create = this.create.bind(this)
         this.delete = this.delete.bind(this)
         this.done = this.done.bind(this)
+        this.changeFilter = this.changeFilter.bind(this)
     }
 
     /**
@@ -59,18 +61,26 @@ class App extends Component {
         })
     }
 
+    getTasksByFilter() {
+    }
+
+
+    changeFilter(newFilter) {
+        this.setState({
+            filter: newFilter
+        })
+    }
+
 
     render() {
         console.log(this.state);
         return (
             <div className="App">
                 <h2>To do List</h2>
-                <button>All</button>
-                <button>Done</button>
-                <button>Pending</button>
+                <FiltterComponent onChangeFilter={this.changeFilter} currentFilter={this.state.filter}/>
                 <CreateTaskComponent onCreate={this.create}/>
-                <TasksListComponent tasks={this.state.tasks} onDelete={this.delete} onDone={this.done}/>
-                {/*<ConfirmDeleteTasksComponent tasks={this.state.tasks}/>*/}
+                <TasksListComponent tasks={this.getTasksByFilter()}
+                                    onDelete={this.delete} onDone={this.done}/>
             </div>
         );
     }
