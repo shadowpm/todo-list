@@ -3,7 +3,6 @@ import './App.css';
 import CreateTaskComponent from './components/CreateTaskComponent';
 import TasksListComponent from './components/TasksListComponent';
 import FilterComponent from './components/filterComponent';
-
 // import ConfirmDeleteTasksComponent from './components/ConfirmDeleteTasksComponent';
 
 class App extends Component {
@@ -109,7 +108,8 @@ class App extends Component {
         <FilterComponent onChangeFilter={this.changeFilter} currentFilter={this.state.filter}/>
         <CreateTaskComponent onCreate={this.create}/>
         <TasksListComponent tasks={this.getTasksByFilter()}
-                            onDelete={this.delete} onDone={this.done}/>
+                            onDone={this.done}
+                            onDelete={this.delete}/>
       </div>
     );
   }
