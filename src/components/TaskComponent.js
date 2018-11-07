@@ -15,7 +15,7 @@ class TaskComponent extends Component {
     }
 
     renderDoneButton () {
-        if (this.props.task.is_done === false) {
+        if (!this.props.task.is_done) {
             return <button onClick={this.btnDoneClicked}>Done</button>
         } else {
             return null;
