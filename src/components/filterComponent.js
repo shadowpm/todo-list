@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class FiltterComponent extends Component {
+class FilterComponent extends Component {
     constructor(props){
         super(props)
         this.btnDoneClicked = this.btnDoneClicked.bind(this)
@@ -27,4 +27,4 @@ class FiltterComponent extends Component {
     }
 }
 
-export default FiltterComponent;
+export default FilterComponent;

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import CreateTaskComponent from './components/CreateTaskComponent';
 import TasksListComponent from './components/TasksListComponent';
-import FiltterComponent from './components/FiltterComponent';
+import FilterComponent from './components/filterComponent';
 
 // import ConfirmDeleteTasksComponent from './components/ConfirmDeleteTasksComponent';
 
@@ -22,6 +22,7 @@ class App extends Component {
         this.delete = this.delete.bind(this)
         this.done = this.done.bind(this)
         this.changeFilter = this.changeFilter.bind(this)
+        this.getTasksByFilter = this.getTasksByFilter.bind(this)
     }
 
     /**
@@ -62,6 +63,17 @@ class App extends Component {
     }
 
     getTasksByFilter() {
+        if (this.state.filter === 'Done'){
+            this.state.tasks.filter((task) =>{
+                return task.is_done = true;
+            })
+        } else if (this.state.filter === 'Pending'){
+            this.state.tasks.filter((task) =>{
+                return task.is_done = false;
+            })
+        } else if (this.state.filter === 'All'){
+                return this.state.tasks;
+        }
     }
 
 
@@ -77,7 +89,7 @@ class App extends Component {
         return (
             <div className="App">
                 <h2>To do List</h2>
-                <FiltterComponent onChangeFilter={this.changeFilter} currentFilter={this.state.filter}/>
+                <FilterComponent onChangeFilter={this.changeFilter} currentFilter={this.state.filter}/>
                 <CreateTaskComponent onCreate={this.create}/>
                 <TasksListComponent tasks={this.getTasksByFilter()}
                                     onDelete={this.delete} onDone={this.done}/>
