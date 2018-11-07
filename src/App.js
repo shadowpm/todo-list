@@ -13,7 +13,7 @@ class App extends Component {
         this.state = {
             tasks: [],
             id: 0,
-            filter: 'all', // ['all', 'pending', 'done']
+            filter: 'All', // ['all', 'pending', 'done']
             editCandidateTaskId: null,
             deleteCandidateTaskId: null
         }
@@ -63,16 +63,17 @@ class App extends Component {
     }
 
     getTasksByFilter() {
-        if (this.state.filter === 'Done'){
-            this.state.tasks.filter((task) =>{
-                return task.is_done = true;
+        if (this.state.filter === 'Done') {
+            return this.state.tasks.filter((task) => {
+                return task.is_done
             })
-        } else if (this.state.filter === 'Pending'){
-            this.state.tasks.filter((task) =>{
-                return task.is_done = false;
+
+        } else if (this.state.filter === 'Pending') {
+            return this.state.tasks.filter((task) => {
+                return !task.is_done
             })
-        } else if (this.state.filter === 'All'){
-                return this.state.tasks;
+        } else if (this.state.filter === 'All') {
+            return this.state.tasks;
         }
     }
 
