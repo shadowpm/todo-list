@@ -25,11 +25,10 @@ class App extends Component {
   }
 
   /**
-   * This.....
-   *
-   * @create
-   * creates an object for each task, containing the task description,
+   * Creates an object for each task, containing the task description,
    * an id, and the task state.
+   *
+   * @param task
    */
   create(task) {
     const object = {
@@ -44,21 +43,23 @@ class App extends Component {
   }
 
   /**
-   *
-   * @delete taskId
-   * gets the taskId that the delete button was clicked on,
+   * Gets the taskId that its Delete button was clicked on,
    * filters the array of that one task and puts it in a new array.
+   *
+   * @param taskId
    */
   delete(taskId) {
     this.setState({
       tasks: this.state.tasks.filter((task) => taskId !== task.id)
-    })  }
+    })
+  }
 
   /**
-   *
-   * @done taskId
    * changes the task status (is_done) to true,
-   * if the done button was clicked.
+   * if the done button was clicked, then puts the whole
+   * updated array into a new array and returns it.
+   *
+   * @param taskId
    */
   done(taskId) {
     this.setState({
@@ -72,10 +73,10 @@ class App extends Component {
   }
 
   /**
+   * Changes the filter to the updated filter if you click on either
+   * of the All, Done or Pending buttons in FilterComponent.
    *
    * @changeFilter newFilter
-   * changes the filter to the new filter if you click on either
-   * of the All, Done or Pending buttons in FilterComponent.
    */
   changeFilter(newFilter) {
     this.setState({
@@ -84,10 +85,10 @@ class App extends Component {
   }
 
   /**
-   *
-   * @getTaskByFilter
-   * checks the task filter and then, according to the filter,
+   * Checks the task filter and then, according to the filter,
    * changes the tasks that are being sent to the taskListComponent.
+   *
+   * @returns {*}
    */
   getTasksByFilter() {
     switch (this.state.filter) {
