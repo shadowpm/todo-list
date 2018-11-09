@@ -3,7 +3,7 @@ import './App.css';
 import CreateTaskComponent from './components/CreateTaskComponent';
 import TasksListComponent from './components/TasksListComponent';
 import FilterComponent from './components/filterComponent';
-// import ConfirmDeleteTasksComponent from './components/ConfirmDeleteTasksComponent';
+import ConfirmDeleteTasksComponent from "./components/ConfirmDeleteTasksComponent";
 
 class App extends Component {
   constructor(props) {
@@ -21,6 +21,9 @@ class App extends Component {
     this.done = this.done.bind(this)
     this.changeFilter = this.changeFilter.bind(this)
     this.getTasksByFilter = this.getTasksByFilter.bind(this)
+    this.getDeleteCandidateTask = this.getDeleteCandidateTask.bind(this)
+    this.cancelDelete = this.cancelDelete.bind(this)
+    this.setDeleteCandidateId = this.setDeleteCandidateId.bind(this)
   }
 
   /**
@@ -47,9 +50,10 @@ class App extends Component {
    *
    * @param taskId
    */
-  delete(taskId) {
+  delete() {
     this.setState({
-      tasks: this.state.tasks.filter((task) => taskId !== task.id)
+      tasks: this.state.tasks.filter((task) => this.state.deleteCandidateTaskId !== task.id),
+      deleteCandidateId: null
     })
   }
 
@@ -100,6 +104,25 @@ class App extends Component {
     }
   }
 
+  /**
+   *
+   * new methods
+   */
+
+  setDeleteCandidateId (taskId){
+    this.setState({deleteCandidateTaskId: taskId})
+  }
+
+  getDeleteCandidateTask() {
+    return this.state.tasks.find((task) => this.state.deleteCandidateTaskId === task.id)
+  }
+
+  cancelDelete() {
+    this.setState({
+      deleteCandidateTaskId: null
+    })
+  }
+
   render() {
     console.log(this.state);
     return (
@@ -109,7 +132,10 @@ class App extends Component {
         <CreateTaskComponent onCreate={this.create}/>
         <TasksListComponent tasks={this.getTasksByFilter()}
                             onDone={this.done}
-                            onDelete={this.delete}/>
+                            onDelete={this.setDeleteCandidateId}/>
+        <ConfirmDeleteTasksComponent task={this.getDeleteCandidateTask()}
+                                     onDelete={this.delete}
+                                     onCancel={this.cancelDelete}/>
       </div>
     );
   }

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import ConfirmDeleteTasksComponent from "./ConfirmDeleteTasksComponent";
 
 class TaskComponent extends Component {
   constructor(props) {
@@ -29,6 +28,7 @@ class TaskComponent extends Component {
   /**
    * Checks the is_done property, if it was false, returns the button,
    * it it was true, doesn't show the button.
+   *
    * @returns {*}
    */
   renderDoneButton() {
