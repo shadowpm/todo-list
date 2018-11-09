@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import _ from 'lodash'
+import _ from 'lodash';
 
 class ConfirmDeleteTasksComponent extends Component {
   render() {
@@ -16,6 +16,4 @@ class ConfirmDeleteTasksComponent extends Component {
     }
   }
 }
-
-
 export default ConfirmDeleteTasksComponent;

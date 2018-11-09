@@ -37,5 +37,4 @@ class CreateTaskComponent extends Component {
     )
   }
 }
-
 export default CreateTaskComponent;

@@ -45,8 +45,8 @@ class App extends Component {
   }
 
   /**
-   * Gets the taskId that its Delete button was clicked on,
-   * filters the array of that one task and puts it in a new array.
+   * filters the array of that one task(knows which task
+   * using deleteCandidateTaskId) and puts it in a new array.
    *
    * @param taskId
    */
@@ -105,18 +105,29 @@ class App extends Component {
   }
 
   /**
+   *We send it as a prop to TaskComponent, so it will go there
+   * and set the deleteCandidateId to task.id value
+   * (bc we only have it there from sending create method
+   * to that component.
    *
-   * new methods
+   * @param taskId
    */
-
   setDeleteCandidateId (taskId){
     this.setState({deleteCandidateTaskId: taskId})
   }
 
+  /**
+   * uses deleteCandidate task id that now we have, to
+   * find the task that delete button was clicked on it.
+   * @returns {*}
+   */
   getDeleteCandidateTask() {
     return this.state.tasks.find((task) => this.state.deleteCandidateTaskId === task.id)
   }
 
+  /**
+   * nulls the value of deleteCandidateTaskId.
+   */
   cancelDelete() {
     this.setState({
       deleteCandidateTaskId: null

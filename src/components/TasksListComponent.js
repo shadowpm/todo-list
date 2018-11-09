@@ -11,5 +11,4 @@ class TasksListComponent extends Component {
         )
   }
 }
-
 export default TasksListComponent;

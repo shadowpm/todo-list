@@ -30,5 +30,4 @@ class FilterComponent extends Component {
     )
   }
 }
-
 export default FilterComponent;
