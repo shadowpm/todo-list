@@ -16,4 +16,5 @@ class ConfirmDeleteTasksComponent extends Component {
     }
   }
 }
+
 export default ConfirmDeleteTasksComponent;

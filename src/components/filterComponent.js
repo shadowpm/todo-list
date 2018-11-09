@@ -8,14 +8,26 @@ class FilterComponent extends Component {
     this.btnAllClicked = this.btnAllClicked.bind(this)
   }
 
+  /**
+   * gives 'All" string as a value to filter
+   * in Change filter methode of App.js
+   */
   btnAllClicked() {
     this.props.onChangeFilter('All')
   }
 
+  /**
+   * gives 'Pending" string as a value to filter
+   * in Change filter methode of App.js
+   */
   btnPendingClicked() {
     this.props.onChangeFilter('Pending')
   }
 
+  /**
+   * gives 'Done" string as a value to filter
+   * in Change filter methode of App.js
+   */
   btnDoneClicked() {
     this.props.onChangeFilter('Done')
   }
@@ -30,4 +42,5 @@ class FilterComponent extends Component {
     )
   }
 }
+
 export default FilterComponent;

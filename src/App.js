@@ -16,6 +16,7 @@ class App extends Component {
       editCandidateTaskId: null,
       deleteCandidateTaskId: null
     }
+
     this.create = this.create.bind(this)
     this.delete = this.delete.bind(this)
     this.done = this.done.bind(this)
@@ -53,7 +54,7 @@ class App extends Component {
   delete() {
     this.setState({
       tasks: this.state.tasks.filter((task) => this.state.deleteCandidateTaskId !== task.id),
-      deleteCandidateId: null
+      deleteCandidateTaskId: null
     })
   }
 
@@ -128,11 +129,7 @@ class App extends Component {
   /**
    * nulls the value of deleteCandidateTaskId.
    */
-  cancelDelete() {
-    this.setState({
-      deleteCandidateTaskId: null
-    })
-  }
+  cancelDelete() {this.setState({ deleteCandidateTaskId: null })}
 
   render() {
     return (
