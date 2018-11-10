@@ -7,6 +7,7 @@ class TaskComponent extends Component {
     this.btnDoneClicked = this.btnDoneClicked.bind(this)
     this.renderDoneButton = this.renderDoneButton.bind(this)
     this.btnDeleteClicked = this.btnDeleteClicked.bind(this)
+    this.btnEditClicked = this.btnEditClicked.bind(this)
   }
 
   /**
@@ -25,6 +26,9 @@ class TaskComponent extends Component {
     this.props.onDone(this.props.task.id)
   }
 
+  btnEditClicked() {
+    this.props.onEdit(this.props.task.id)
+  }
   /**
    * Checks the is_done property, if it was false, returns the button,
    * it it was true, doesn't show the button.
@@ -44,7 +48,7 @@ class TaskComponent extends Component {
       <div>
         {this.props.task.task}
         <button onClick={this.btnDeleteClicked}>Delete</button>
-        <button>Edit</button>
+        <button onClick={this.btnEditClicked}>Edit</button>
         {this.renderDoneButton()}
       </div>
     )
