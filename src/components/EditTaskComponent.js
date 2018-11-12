@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import _ from 'lodash';
+import { Button } from 'reactstrap';
 
 class EditTaskComponent extends Component {
   constructor(props) {
@@ -27,12 +28,12 @@ class EditTaskComponent extends Component {
     } else {
       return (
         <div>
-          <h4>Edit task:</h4>
+          <h6 className="edit-delete-style">Edit task:</h6>
           <input placeholder="insert task"
                  onChange={this.handleChange}
                  value={this.state.value}/>
-          <button onClick={this.btnEditClicked}>Edit</button>
-          <button onClick={this.props.onCancelEdit}>Cancel</button>
+          <Button className="button-style btn-primary btn-sm" onClick={this.btnEditClicked}>Edit</Button>
+          <Button className="button-style btn-primary btn-sm" onClick={this.props.onCancelEdit}>Cancel</Button>
         </div>
       )
     }

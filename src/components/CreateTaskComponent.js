@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Button} from 'reactstrap';
 
 class CreateTaskComponent extends Component {
   constructor(props) {
@@ -27,11 +28,11 @@ class CreateTaskComponent extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <input placeholder="Enter task"
+          <input className="input-style" placeholder="Enter task"
                  id="user-task"
                  value={this.state.value}
                  onChange={this.handleChange}/>
-          <button>Add Task</button>
+          <Button className="btn btn-primary btn-sm">Add Task</Button>
         </form>
       </div>
     )

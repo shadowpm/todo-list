@@ -173,7 +173,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h2>To do List</h2>
+        <h2 className="heading-color">.. Tasks List ..</h2>
         <FilterComponent onChangeFilter={this.changeFilter} currentFilter={this.state.filter}/>
         <CreateTaskComponent onCreate={this.create}/>
         <TasksListComponent tasks={this.getTasksByFilter()}

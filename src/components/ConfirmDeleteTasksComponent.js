@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import _ from 'lodash';
+import { Button } from 'reactstrap';
 
 class ConfirmDeleteTasksComponent extends Component {
   render() {
@@ -8,9 +9,9 @@ class ConfirmDeleteTasksComponent extends Component {
     } else {
       return (
         <div>
-          <h4>Do you want to delete this: "{this.props.task.task}" task?</h4>
-          <button onClick={this.props.onDelete}>Yes</button>
-          <button onClick={this.props.onCancel}>No</button>
+          <h6 className="edit-delete-style">Do you want to delete this: "{this.props.task.task}" task?</h6>
+          <Button className="button-style btn-primary btn-sm" onClick={this.props.onDelete}>Yes</Button>
+          <Button className="button-style btn-primary btn-sm" onClick={this.props.onCancel}>No</Button>
         </div>
       )
     }

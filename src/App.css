@@ -1,3 +1,22 @@
 .App {
   text-align: center;
 }
+
+.heading-color {
+  color: coral;
+  margin-top: 10px;
+}
+
+.button-style {
+  margin: 2px;
+}
+
+.input-style {
+  width: 500px;
+  margin-right: 3px;
+  margin-top: 15px;
+}
+
+.edit-delete-style {
+  margin-top: 50px;
+}

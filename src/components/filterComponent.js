@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Button } from 'reactstrap';
 
 class FilterComponent extends Component {
   constructor(props) {
@@ -35,9 +36,9 @@ class FilterComponent extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.btnAllClicked}>All</button>
-        <button onClick={this.btnPendingClicked}>Pending</button>
-        <button onClick={this.btnDoneClicked}>Done</button>
+        <Button className="button-style btn btn-primary btn-sm" color="success" onClick={this.btnAllClicked}>All</Button>
+        <Button className="button-style btn btn-primary btn-sm" color="warning" onClick={this.btnPendingClicked}>Pending</Button>
+        <Button className="button-style btn btn-primary btn-sm" color="danger" onClick={this.btnDoneClicked}>Done</Button>
       </div>
     )
   }

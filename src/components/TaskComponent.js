@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Button } from 'reactstrap';
 
 class TaskComponent extends Component {
   constructor(props) {
@@ -37,7 +38,7 @@ class TaskComponent extends Component {
    */
   renderDoneButton() {
     if (!this.props.task.is_done) {
-      return <button onClick={this.btnDoneClicked}>Done</button>
+      return <button className="button-style btn-primary btn-sm" onClick={this.btnDoneClicked}>Done</button>
     } else {
       return null;
     }
@@ -47,8 +48,8 @@ class TaskComponent extends Component {
     return (
       <div>
         {this.props.task.task}
-        <button onClick={this.btnDeleteClicked}>Delete</button>
-        <button onClick={this.btnEditClicked}>Edit</button>
+        <Button className="button-style btn-primary btn-sm" onClick={this.btnDeleteClicked}>Delete</Button>
+        <Button className="button-style btn-primary btn-sm" onClick={this.btnEditClicked}>Edit</Button>
         {this.renderDoneButton()}
       </div>
     )
