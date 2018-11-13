@@ -26,15 +26,13 @@ class CreateTaskComponent extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input className="input-style" placeholder="Enter task"
-                 id="user-task"
-                 value={this.state.value}
-                 onChange={this.handleChange}/>
-          <Button className="btn btn-primary btn-sm">Add Task</Button>
-        </form>
-      </div>
+      <form onSubmit={this.handleSubmit} className="form-inline form-style">
+        <input className="form-control mb-2 mr-2" placeholder="Enter task"
+               id="user-task"
+               value={this.state.value}
+               onChange={this.handleChange}/>
+        <Button className="btn btn-primary btn-sm mb-2">Add Task</Button>
+      </form>
     )
   }
 }

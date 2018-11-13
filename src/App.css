@@ -11,10 +11,10 @@
   margin: 2px;
 }
 
-.input-style {
-  width: 500px;
-  margin-right: 3px;
-  margin-top: 15px;
+.form-style {
+  display: inline-table;
+  align-items: center;
+  justify-content: center;
 }
 
 .edit-delete-style {
