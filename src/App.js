@@ -4,6 +4,7 @@ import CreateTaskComponent from './components/CreateTaskComponent';
 import TasksListComponent from './components/TasksListComponent';
 import FilterComponent from './components/filterComponent';
 import ConfirmDeleteTasksComponent from "./components/ConfirmDeleteTasksComponent";
+import EditTaskComponent from "./components/EditTaskComponent";
 
 class App extends Component {
   constructor(props) {
@@ -25,6 +26,11 @@ class App extends Component {
     this.getDeleteCandidateTask = this.getDeleteCandidateTask.bind(this)
     this.cancelDelete = this.cancelDelete.bind(this)
     this.setDeleteCandidateId = this.setDeleteCandidateId.bind(this)
+    this.edit = this.edit.bind(this)
+    this.setEditCandidateId = this.setEditCandidateId.bind(this)
+    this.cancelEdit = this.cancelEdit.bind(this)
+    this.getEditCandidateTask = this.getEditCandidateTask.bind(this)
+
   }
 
   /**
@@ -113,7 +119,7 @@ class App extends Component {
    *
    * @param taskId
    */
-  setDeleteCandidateId (taskId){
+  setDeleteCandidateId(taskId) {
     this.setState({deleteCandidateTaskId: taskId})
   }
 
@@ -129,20 +135,57 @@ class App extends Component {
   /**
    * nulls the value of deleteCandidateTaskId.
    */
-  cancelDelete() {this.setState({ deleteCandidateTaskId: null })}
+  cancelDelete() {
+    this.setState({deleteCandidateTaskId: null})
+  }
+
+  /**
+   *
+   * Edit methods
+   */
+
+  edit(editedValue) {
+    let newTasks = this.state.tasks.map((task) => {
+      if (this.state.editCandidateTaskId === task.id) {
+        task.task = editedValue;
+      }
+      return task;
+    });
+
+    this.setState({
+      tasks: newTasks,
+      editCandidateTaskId: null
+    })
+  }
+
+  setEditCandidateId(taskId) {
+    this.setState({editCandidateTaskId: taskId})
+  }
+
+  getEditCandidateTask() {
+    return this.state.tasks.find((task) => this.state.editCandidateTaskId === task.id)
+  }
+
+  cancelEdit() {
+    this.setState({editCandidateTaskId: null})
+  }
 
   render() {
     return (
       <div className="App">
-        <h2>To do List</h2>
+        <h2 className="heading-color">.. Tasks List ..</h2>
         <FilterComponent onChangeFilter={this.changeFilter} currentFilter={this.state.filter}/>
         <CreateTaskComponent onCreate={this.create}/>
         <TasksListComponent tasks={this.getTasksByFilter()}
                             onDone={this.done}
-                            onDelete={this.setDeleteCandidateId}/>
+                            onDelete={this.setDeleteCandidateId}
+                            onEdit={this.setEditCandidateId}/>
         <ConfirmDeleteTasksComponent task={this.getDeleteCandidateTask()}
                                      onDelete={this.delete}
                                      onCancel={this.cancelDelete}/>
+        <EditTaskComponent onEdit={this.edit}
+                           onCancelEdit={this.cancelEdit}
+                           task={this.getEditCandidateTask()}/>
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Button } from 'reactstrap';
 
 class TaskComponent extends Component {
   constructor(props) {
@@ -7,6 +8,7 @@ class TaskComponent extends Component {
     this.btnDoneClicked = this.btnDoneClicked.bind(this)
     this.renderDoneButton = this.renderDoneButton.bind(this)
     this.btnDeleteClicked = this.btnDeleteClicked.bind(this)
+    this.btnEditClicked = this.btnEditClicked.bind(this)
   }
 
   /**
@@ -25,6 +27,9 @@ class TaskComponent extends Component {
     this.props.onDone(this.props.task.id)
   }
 
+  btnEditClicked() {
+    this.props.onEdit(this.props.task.id)
+  }
   /**
    * Checks the is_done property, if it was false, returns the button,
    * it it was true, doesn't show the button.
@@ -33,7 +38,7 @@ class TaskComponent extends Component {
    */
   renderDoneButton() {
     if (!this.props.task.is_done) {
-      return <button onClick={this.btnDoneClicked}>Done</button>
+      return <button className="button-style btn-primary btn-sm" onClick={this.btnDoneClicked}>Done</button>
     } else {
       return null;
     }
@@ -42,9 +47,9 @@ class TaskComponent extends Component {
   render() {
     return (
       <div>
-        {this.props.task.task}
-        <button onClick={this.btnDeleteClicked}>Delete</button>
-        <button>Edit</button>
+        <div className="task-style">{this.props.task.task}</div>
+        <Button className="button-style btn-primary btn-sm" onClick={this.btnDeleteClicked}>Delete</Button>
+        <Button className="button-style btn-primary btn-sm" onClick={this.btnEditClicked}>Edit</Button>
         {this.renderDoneButton()}
       </div>
     )

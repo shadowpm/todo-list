@@ -8,7 +8,8 @@ class TasksListComponent extends Component {
         (task) => (<TaskComponent key={task.id}
                                   task={task}
                                   onDone={this.props.onDone}
-                                  onDelete={this.props.onDelete}/>))
+                                  onDelete={this.props.onDelete}
+                                  onEdit={this.props.onEdit}/>))
     )
   }
 }

@@ -1,3 +1,28 @@
 .App {
   text-align: center;
 }
+
+.heading-color {
+  color: coral;
+  margin-top: 10px;
+}
+
+.button-style {
+  margin: 2px;
+}
+
+.form-style {
+  display: inline-table;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.edit-delete-style {
+  margin-top: 50px;
+}
+
+.task-style {
+  display: inline-block;
+  margin-right: 20px;
+}
