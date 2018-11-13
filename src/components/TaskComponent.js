@@ -47,7 +47,7 @@ class TaskComponent extends Component {
   render() {
     return (
       <div>
-        {this.props.task.task}
+        <div className="task-style">{this.props.task.task}</div>
         <Button className="button-style btn-primary btn-sm" onClick={this.btnDeleteClicked}>Delete</Button>
         <Button className="button-style btn-primary btn-sm" onClick={this.btnEditClicked}>Edit</Button>
         {this.renderDoneButton()}

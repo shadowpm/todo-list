@@ -21,3 +21,8 @@
 .edit-delete-style {
   margin-top: 50px;
 }
+
+.task-style {
+  display: inline-block;
+  margin-right: 20px;
+}
